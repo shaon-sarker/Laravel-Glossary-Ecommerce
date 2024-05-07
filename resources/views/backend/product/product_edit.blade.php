@@ -19,7 +19,7 @@
       <div class="card-body p-4">
          <h5 class="card-title">Edit Product</h5>
          <hr/>
-         <form id="myForm" method="post" action="{{ route('update.product') }}"  >
+         <form id="myForm" method="POST" action="{{ route('update.product') }}">
             @csrf
             <input type="hidden" name="id" value="{{ $products->id }}">
             <div class="form-body mt-4">
@@ -44,9 +44,7 @@
                         </div>
                         <div class="form-group mb-3">
                            <label for="inputProductDescription" class="form-label">Short Description</label>
-                           <textarea name="short_descp" class="form-control" id="inputProductDescription" rows="3">
-                           {{ $products->short_descp }}
-                           </textarea>
+                           <textarea name="short_descp" class="form-control" id="inputProductDescription" cols="30" rows="10">{{ $products->short_descp }}</textarea>
                         </div>
                      </div>
                   </div>
@@ -135,9 +133,11 @@
                               <!-- // end row  -->
                            </div>
                            <hr>
-                           <div class="col-12">
-                              <div class="d-grid">
-                                 <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+                           <div class="row">
+                              <div class="col-sm-3"></div>
+                              <div class="col-sm-9 text-secondary">
+                                 <button type="submit" class="btn btn-success px-4">Submit</button>
+                                 <a href="{{ route('all.product') }}" class="btn btn-danger px-4">Cancel</a>
                               </div>
                            </div>
                         </div>
@@ -155,7 +155,7 @@
    <h6 class="mb-0 text-uppercase">Update Main Image Thambnail </h6>
    <hr>
    <div class="card">
-      <form method="post" action="{{ route('update.product.thambnail') }}" enctype="multipart/form-data" >
+      <form method="POST" action="{{ route('update.product.thambnail') }}" enctype="multipart/form-data" >
          @csrf
          <input type="hidden" name="id" value="{{ $products->id }}">	
          <input type="hidden" name="old_img" value="{{ $products->product_thambnail }}">		
@@ -168,7 +168,8 @@
                <label for="formFile" class="form-label"> </label>
                <img src="{{ asset($products->product_thambnail) }}" style="width:100px; height:100px">
             </div>
-            <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+            <button type="submit" class="btn btn-success px-4">Submit</button>
+            <a href="{{ route('all.product') }}" class="btn btn-danger px-4">Cancel</a>
          </div>
       </form>
    </div>
@@ -190,7 +191,7 @@
                </tr>
             </thead>
             <tbody>
-               <form method="post" action="{{ route('update.product.multiimage') }}" enctype="multipart/form-data" >
+               <form method="POST" action="{{ route('update.product.multiimage') }}" enctype="multipart/form-data" >
                   @csrf
                   @foreach($multiImgs as $key => $img)
                   <tr>
@@ -353,12 +354,12 @@
  <script>
 	(function() {
 	 function IDGenerator() {
-	   this.length = 3;
+	   this.length = 5;
 	   this.timestamp = +new Date;
    
 	   this.generate = function() {
 		 var ts = this.timestamp.toString().split("").reverse();
-		 var id = "PC-";
+		 var id = "pc-";
    
 		 for (var i = 0; i < this.length; ++i) {
 		   id += ts[Math.floor(Math.random() * ts.length)];

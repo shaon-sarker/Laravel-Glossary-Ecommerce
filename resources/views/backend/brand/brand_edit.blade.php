@@ -57,7 +57,8 @@
                         <div class="row">
                            <div class="col-sm-3"></div>
                            <div class="col-sm-9 text-secondary">
-                              <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+                              <button type="submit" class="btn btn-success px-4">Update</button>
+                              <a href="{{ route('all.brand') }}" class="btn btn-danger px-4">Cancel</a>
                            </div>
                         </div>
                   </div>

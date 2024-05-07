@@ -7,16 +7,13 @@
       <div class="ps-3">
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
-               <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+               <li class="breadcrumb-item"><a href=""><i class="bx bx-home-alt"></i></a>
                </li>
-               <li class="breadcrumb-item active" aria-current="page">Add Brand </li>
+               <li class="breadcrumb-item active" aria-current="page">Add Brand</li>
             </ol>
          </nav>
       </div>
       <div class="ms-auto">
-         <div class="btn-group">
-            <a href="{{ route('all.brand') }}" class="btn btn-primary">Back</a> 				 
-         </div>
       </div>
    </div>
    <!--end breadcrumb-->
@@ -55,7 +52,7 @@
                         <div class="row">
                            <div class="col-sm-3"></div>
                            <div class="col-sm-9 text-secondary">
-                              <button type="submit" class="btn btn-primary px-4">Submit</button>
+                              <button type="submit" class="btn btn-success px-4">Submit</button>
                               <a href="{{ route('all.brand') }}" class="btn btn-danger px-4">Cancel</a>
                            </div> 
                         </div>

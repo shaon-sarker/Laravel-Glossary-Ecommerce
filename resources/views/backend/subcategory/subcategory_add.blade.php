@@ -24,11 +24,11 @@
             <div class="col-lg-10">
                <div class="card">
                   <div class="card-body">
-                     <form id="myForm" method="post" action="{{ route('store.subcategory') }}"   >
+                     <form id="myForm" method="POST" action="{{ route('store.subcategory') }}">
                         @csrf
                         <div class="row mb-3">
                            <div class="col-sm-3">
-                              <h6 class="mb-0">Category Name</h6>
+                              <h6 class="mb-0">Category Name <span class="text-danger">*</span></h6>
                            </div>
                            <div class="form-group col-sm-9 text-secondary">
                               <select name="category_id" class="form-select mb-3" aria-label="Default select example">
@@ -37,6 +37,9 @@
                                  <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                  @endforeach
                               </select>
+                              @error('category_id')
+                                 <span class="text-danger"> {{ $message }} </span>
+                              @enderror
                            </div>
                         </div>
                         <div class="row mb-3">
@@ -44,13 +47,14 @@
                               <h6 class="mb-0">SubCategory Name</h6>
                            </div>
                            <div class="form-group col-sm-9 text-secondary">
-                              <input type="text" name="subcategory_name" class="form-control"   />
+                              <input type="text" name="subcategory_name" class="form-control"/>
                            </div>
                         </div>
                         <div class="row">
                            <div class="col-sm-3"></div>
                            <div class="col-sm-9 text-secondary">
-                              <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+                              <button type="submit" class="btn btn-success px-4">Submit</button>
+                              <a href="{{ route('all.subcategory') }}" class="btn btn-danger px-4">Cancel</a>
                            </div>
                         </div>
                   </div>
@@ -69,7 +73,7 @@
                    required : true,
                }, 
            },
-           messages :{
+           messages :{  
                subcategory_name: {
                    required : 'Please Enter SubCategory Name',
                },

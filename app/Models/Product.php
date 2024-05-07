@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $guarded = []; 
+    protected $guarded = ['id']; 
 
     public function vendor(){
         return $this->belongsTo(User::class,'vendor_id','id');
@@ -18,12 +18,10 @@ class Product extends Model
         return $this->belongsTo(Category::class,'category_id','id');
     }
 
-      public function subcategory(){
+    public function subcategory(){
         return $this->belongsTo(SubCategory::class,'subcategory_id','id');
     }
-
-
-  public function brand(){
+    public function brand(){
         return $this->belongsTo(Brand::class,'brand_id','id');
     }
 

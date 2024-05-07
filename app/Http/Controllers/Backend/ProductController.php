@@ -87,7 +87,18 @@ class ProductController extends Controller
                 'alert-type' => 'success'
             );
             return redirect()->route('all.product')->with($notification); 
-        } // End Method 
+        } // End Method
+        
+        public function DetailProduct($id)
+        {
+            $products = Product::findOrFail($id);
+            $multiImgs = MultiImg::select(['id','photo_name'])->where('product_id',$id)->get();
+            $activeVendor = User::select(['id','name'])->where('status','active')->where('role','vendor')->latest()->get();
+            $brands = Brand::select(['id','brand_name'])->latest()->get();
+            $categories = Category::select(['id','category_name'])->latest()->get();
+            $subcategory = SubCategory::select(['id','subcategory_name'])->latest()->get();
+            return view('backend.product.product_details',compact('brands','categories','activeVendor','products','subcategory','multiImgs'));
+        }
 
 
         public function EditProduct($id)

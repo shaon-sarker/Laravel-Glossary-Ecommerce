@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 class BrandController extends Controller
 {
     public function AllBrand(){
-        $brands = Brand::select(['id','brand_name','brand_image'])->latest()->get();
+        $brands = Brand::select(['id','brand_name','brand_image','brand_slug'])->latest()->get();
         return view('backend.brand.brand_all',compact('brands'));
     } // End Method 
 
@@ -70,10 +70,10 @@ class BrandController extends Controller
         Image::make($image)->resize(300,300)->save('upload/brand/'.$name_gen);
         $save_url = 'upload/brand/'.$name_gen;
 
-        if (file_exists($old_img)) {
+        if (file_exists($old_img)) 
+        {
            unlink($old_img);
         }
-
         Brand::findOrFail($brand_id)->update([
             'brand_name' => $request->brand_name,
             'brand_slug' => strtolower(str_replace(' ', '-',$request->brand_name)),
@@ -87,8 +87,9 @@ class BrandController extends Controller
 
         return redirect()->route('all.brand')->with($notification); 
 
-        } else {
-
+        }
+        else 
+        {
              Brand::findOrFail($brand_id)->update([
             'brand_name' => $request->brand_name,
             'brand_slug' => strtolower(str_replace(' ', '-',$request->brand_name)), 

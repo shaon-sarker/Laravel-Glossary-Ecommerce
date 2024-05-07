@@ -12,7 +12,7 @@ use Intervention\Image\Facades\Image;
 class CategoryController extends Controller
 {
      public function AllCategory(){
-        $categories = Category::select(['id','category_name','category_image'])->latest()->get();
+        $categories = Category::select(['id','category_name','category_image','category_slug'])->latest()->get();
         return view('backend.category.category_all',compact('categories'));
     } // End Method 
  

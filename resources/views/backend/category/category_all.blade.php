@@ -15,7 +15,7 @@
       </div>
       <div class="ms-auto">
          <div class="btn-group">
-            <a href="{{ route('add.category') }}" class="btn btn-primary">Add Category</a> 				 
+            <a href="{{ route('add.category') }}" class="btn btn-outline-primary">Add Category</a> 				 
          </div>
       </div>
    </div>
@@ -24,12 +24,13 @@
    <div class="card">
       <div class="card-body">
          <div class="table-responsive">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="example" class="table table-bordered">
                <thead>
                   <tr>
                      <th>Sl</th>
-                     <th>Category Name </th>
-                     <th>Category Image </th>
+                     <th>Category Name</th>
+                     <th>Category Slug</th>
+                     <th>Category Image</th>
                      <th>Action</th>
                   </tr>
                </thead>
@@ -38,14 +39,15 @@
                   <tr>
                      <td> {{ $key+1 }} </td>
                      <td>{{ $item->category_name }}</td>
-                     <td> <img src="{{ asset($item->category_image) }}" style="width: 70px; height:40px;" >  </td>
+                     <td><span class="badge bg-success text-white p-2">{{ $item->category_slug }}</span></td>
+                     <td> <img src="{{ asset($item->category_image) }}" style="width: 60px;" alt="category-image"></td>
                      <td>
-                        @if(Auth::user()->can('category.edit'))
+                        {{-- @if(Auth::user()->can('category.edit')) --}}
                         <a href="{{ route('edit.category',$item->id) }}" class="btn btn-info">Edit</a>
-                        @endif
-                        @if(Auth::user()->can('category.delete'))
+                        {{-- @endif
+                        @if(Auth::user()->can('category.delete')) --}}
                         <a href="{{ route('delete.category',$item->id) }}" class="btn btn-danger" id="delete" >Delete</a>
-                        @endif
+                        {{-- @endif --}}
                      </td>
                   </tr>
                   @endforeach
@@ -54,6 +56,7 @@
                   <tr>
                      <th>Sl</th>
                      <th>Category Name </th>
+                     <th>Category Slug</th>
                      <th>Category Image </th>
                      <th>Action</th>
                   </tr>

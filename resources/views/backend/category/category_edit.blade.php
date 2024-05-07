@@ -20,10 +20,10 @@
    <div class="container">
       <div class="main-body">
          <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-12">
                <div class="card">
                   <div class="card-body">
-                     <form id="myForm" method="post" action="{{ route('update.category') }}" enctype="multipart/form-data" >
+                     <form id="myForm" method="POST" action="{{ route('update.category') }}" enctype="multipart/form-data" >
                         @csrf
                         <input type="hidden" name="id" value="{{ $category->id }}">
                         <input type="hidden" name="old_image" value="{{ $category->category_image }}">
@@ -54,7 +54,8 @@
                         <div class="row">
                            <div class="col-sm-3"></div>
                            <div class="col-sm-9 text-secondary">
-                              <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+                              <button type="submit" class="btn btn-success px-4">Update</button>
+                              <a href="{{ route('all.category') }}" class="btn btn-danger px-4">Cancel</a>
                            </div>
                         </div>
                   </div>

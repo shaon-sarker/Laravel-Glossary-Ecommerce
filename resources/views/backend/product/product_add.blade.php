@@ -19,7 +19,7 @@
       <div class="card-body p-4">
          <h5 class="card-title">Add New Product</h5>
          <hr/>
-         <form id="myForm" method="post" action="{{ route('store.product') }}" enctype="multipart/form-data" >
+         <form id="myForm" method="POST" action="{{ route('store.product') }}" enctype="multipart/form-data" >
             @csrf
             <div class="form-body mt-4">
                <div class="row">
@@ -139,9 +139,11 @@
                               <!-- // end row  -->
                            </div>
                            <hr>
-                           <div class="col-12">
-                              <div class="d-grid">
-                                 <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+                           <div class="row">
+                              <div class="col-sm-3"></div>
+                              <div class="col-sm-9 text-secondary">
+                                 <button type="submit" class="btn btn-success px-4">Submit</button>
+                                 <a href="{{ route('all.product') }}" class="btn btn-danger px-4">Cancel</a>
                               </div>
                            </div>
                         </div>
@@ -296,12 +298,12 @@
  <script>
 	(function() {
 	 function IDGenerator() {
-	   this.length = 3;
+	   this.length = 5;
 	   this.timestamp = +new Date;
    
 	   this.generate = function() {
 		 var ts = this.timestamp.toString().split("").reverse();
-		 var id = "PC-";
+		 var id = "pc-";
    
 		 for (var i = 0; i < this.length; ++i) {
 		   id += ts[Math.floor(Math.random() * ts.length)];

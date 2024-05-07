@@ -7,7 +7,7 @@
       <div class="ps-3">
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
-               <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+               <li class="breadcrumb-item"><a href=""><i class="bx bx-home-alt"></i></a>
                </li>
                <li class="breadcrumb-item active" aria-current="page">Add Category </li>
             </ol>
@@ -20,17 +20,17 @@
    <div class="container">
       <div class="main-body">
          <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-12">
                <div class="card">
                   <div class="card-body">
-                     <form id="myForm" method="post" action="{{ route('store.category') }}" enctype="multipart/form-data" >
+                     <form id="myForm" method="POST" action="{{ route('store.category') }}" enctype="multipart/form-data" >
                         @csrf
                         <div class="row mb-3">
                            <div class="col-sm-3">
                               <h6 class="mb-0">Category Name</h6>
                            </div>
                            <div class="form-group col-sm-9 text-secondary">
-                              <input type="text" name="category_name" class="form-control"   />
+                              <input type="text" name="category_name" class="form-control"/>
                            </div>
                         </div>
                         <div class="row mb-3">
@@ -38,7 +38,7 @@
                               <h6 class="mb-0">Category Image </h6>
                            </div>
                            <div class="col-sm-9 text-secondary">
-                              <input type="file" name="category_image" class="form-control"  id="image"   />
+                              <input type="file" name="category_image" class="form-control" id="image"/>
                            </div>
                         </div>
                         <div class="row mb-3">
@@ -46,13 +46,14 @@
                               <h6 class="mb-0"> </h6>
                            </div>
                            <div class="col-sm-9 text-secondary">
-                              <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Category-image" style="width:100px; height: 100px;"  >
+                              <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Category-image" style="width:100px; height: 100px;">
                            </div>
                         </div>
                         <div class="row">
                            <div class="col-sm-3"></div>
                            <div class="col-sm-9 text-secondary">
-                              <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+                              <button type="submit" class="btn btn-success px-4">Submit</button>
+                              <a href="{{ route('all.category') }}" class="btn btn-danger px-4">Cancel</a>
                            </div>
                         </div>
                   </div>

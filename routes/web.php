@@ -122,49 +122,50 @@ Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->na
 Route::middleware(['auth','role:admin'])->group(function() {
 // Brand All Route 
 Route::controller(BrandController::class)->group(function(){
-Route::get('/all/brand' , 'AllBrand')->name('all.brand');
-Route::get('/add/brand' , 'AddBrand')->name('add.brand');
-Route::post('/store/brand' , 'StoreBrand')->name('store.brand');
-Route::get('/edit/brand/{id}' , 'EditBrand')->name('edit.brand');
-Route::post('/update/brand' , 'UpdateBrand')->name('update.brand');
-Route::get('/delete/brand/{id}' , 'DeleteBrand')->name('delete.brand');
+Route::get('/brand' , 'AllBrand')->name('all.brand');
+Route::get('/brand/create' , 'AddBrand')->name('add.brand');
+Route::post('/brand/store' , 'StoreBrand')->name('store.brand');
+Route::get('/brand/{id}/edit' , 'EditBrand')->name('edit.brand');
+Route::post('/brand/update' , 'UpdateBrand')->name('update.brand');
+Route::get('brand/{id}/delete' , 'DeleteBrand')->name('delete.brand');
 });
 
 
 // Category All Route 
 Route::controller(CategoryController::class)->group(function(){
-Route::get('/all/category' , 'AllCategory')->name('all.category');
-Route::get('/add/category' , 'AddCategory')->name('add.category');
-Route::post('/store/category' , 'StoreCategory')->name('store.category');
-Route::get('/edit/category/{id}' , 'EditCategory')->name('edit.category');
-Route::post('/update/category' , 'UpdateCategory')->name('update.category');
-Route::get('/delete/category/{id}' , 'DeleteCategory')->name('delete.category');
+Route::get('/category' , 'AllCategory')->name('all.category');
+Route::get('/category/create' , 'AddCategory')->name('add.category');
+Route::post('/category/store' , 'StoreCategory')->name('store.category');
+Route::get('/category/{id}/edit' , 'EditCategory')->name('edit.category');
+Route::post('/category/update' , 'UpdateCategory')->name('update.category');
+Route::get('/category/{id}/delete' , 'DeleteCategory')->name('delete.category');
 });
 
 // Sub-Category All Route 
 Route::controller(SubCategoryController::class)->group(function(){
-Route::get('/all/subcategory' , 'AllSubCategory')->name('all.subcategory');
-Route::get('/add/subcategory' , 'AddSubCategory')->name('add.subcategory');
-Route::post('/store/subcategory' , 'StoreSubCategory')->name('store.subcategory');
-Route::get('/edit/subcategory/{id}' , 'EditSubCategory')->name('edit.subcategory');
-Route::post('/update/subcategory' , 'UpdateSubCategory')->name('update.subcategory');
-Route::get('/delete/subcategory/{id}' , 'DeleteSubCategory')->name('delete.subcategory');
+Route::get('/subcategory' , 'AllSubCategory')->name('all.subcategory');
+Route::get('/subcategory/create' , 'AddSubCategory')->name('add.subcategory');
+Route::post('/subcategory/store' , 'StoreSubCategory')->name('store.subcategory');
+Route::get('/subcategory/{id}/edit' , 'EditSubCategory')->name('edit.subcategory');
+Route::post('/subcategory/update' , 'UpdateSubCategory')->name('update.subcategory');
+Route::get('/subcategory/{id}/delete' , 'DeleteSubCategory')->name('delete.subcategory');
 Route::get('/subcategory/ajax/{category_id}' , 'GetSubCategory');
 });
 
 // Product All Route 
 Route::controller(ProductController::class)->group(function(){
-    Route::get('/all/product' , 'AllProduct')->name('all.product');
-    Route::get('/add/product' , 'AddProduct')->name('add.product');
-    Route::post('/store/product' , 'StoreProduct')->name('store.product');
-    Route::get('/edit/product/{id}' , 'EditProduct')->name('edit.product');
-    Route::post('/update/product' , 'UpdateProduct')->name('update.product');
-    Route::post('/update/product/thambnail' , 'UpdateProductThambnail')->name('update.product.thambnail');
-    Route::post('/update/product/multiimage' , 'UpdateProductMultiimage')->name('update.product.multiimage');
-    Route::get('/product/multiimg/delete/{id}' , 'MulitImageDelelte')->name('product.multiimg.delete');
-    Route::get('/product/inactive/{id}' , 'ProductInactive')->name('product.inactive');
-    Route::get('/product/active/{id}' , 'ProductActive')->name('product.active');
-    Route::get('/delete/product/{id}' , 'ProductDelete')->name('delete.product');
+    Route::get('/product' , 'AllProduct')->name('all.product');
+    Route::get('/product/create' , 'AddProduct')->name('add.product');
+    Route::post('/product/store' , 'StoreProduct')->name('store.product');
+    Route::get('/product/{id}/details' , 'DetailProduct')->name('detail.product');
+    Route::get('/product/{id}/edit' , 'EditProduct')->name('edit.product');
+    Route::post('/product/update' , 'UpdateProduct')->name('update.product');
+    Route::post('/product/thambnail/update' , 'UpdateProductThambnail')->name('update.product.thambnail');
+    Route::post('/product/multiimage/update' , 'UpdateProductMultiimage')->name('update.product.multiimage');
+    Route::get('/product/multiimg/{id}/delete' , 'MulitImageDelelte')->name('product.multiimg.delete');
+    Route::get('/product/{id}/inactive' , 'ProductInactive')->name('product.inactive');
+    Route::get('/product/{id}/active' , 'ProductActive')->name('product.active');
+    Route::get('/product/{id}/delete' , 'ProductDelete')->name('delete.product');
     // For Product Stock
     Route::get('/product/stock' , 'ProductStock')->name('product.stock');
 });

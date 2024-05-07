@@ -7,7 +7,7 @@
       <div class="ps-3">
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
-               <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+               <li class="breadcrumb-item"><a href=""><i class="bx bx-home-alt"></i></a>
                </li>
                <li class="breadcrumb-item active" aria-current="page">All Brand</li>
             </ol>
@@ -15,7 +15,7 @@
       </div>
       <div class="ms-auto">
          <div class="btn-group">
-            <a href="{{ route('add.brand') }}" class="btn btn-primary">Add Brand</a> 				 
+            <a href="{{ route('add.brand') }}" class="btn btn-outline-primary">Add Brand</a> 				 
          </div>
       </div>
    </div>
@@ -24,11 +24,12 @@
    <div class="card">
       <div class="card-body">
          <div class="table-responsive">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="example" class="table table-bordered">
                <thead>
                   <tr>
                      <th>Sl</th>
                      <th>Brand Name </th>
+                     <th>Brand Slug </th>
                      <th>Brand Image </th>
                      <th>Action</th>
                   </tr>
@@ -38,14 +39,15 @@
                   <tr>
                      <td> {{ $key+1 }} </td>
                      <td>{{ $item->brand_name }}</td>
-                     <td> <img src="{{ asset($item->brand_image) }}" style="width: 70px; height:40px;" alt="brand-image">  </td>
+                     <td><span class="badge bg-success text-white p-2">{{ $item->brand_slug }}</span></td>
+                     <td> <img src="{{ asset($item->brand_image) }}" style="width: 60px;" alt="brand-image"></td>
                      <td>
-                        @if(Auth::user()->can('brand.edit'))
+                        {{-- @if(Auth::user()->can('brand.edit')) --}}
                         <a href="{{ route('edit.brand',$item->id) }}" class="btn btn-info">Edit</a>
-                        @endif
-                        @if(Auth::user()->can('brand.delete'))
+                        {{-- @endif
+                        @if(Auth::user()->can('brand.delete')) --}}
                         <a href="{{ route('delete.brand',$item->id) }}" class="btn btn-danger" id="delete" >Delete</a>
-                        @endif
+                        {{-- @endif --}}
                      </td>
                   </tr>
                   @endforeach
@@ -53,8 +55,9 @@
                <tfoot>
                   <tr>
                      <th>Sl</th>
-                     <th>Brand Name </th>
-                     <th>Brand Image </th>
+                     <th>Brand Name</th>
+                     <th>Brand Slug </th>
+                     <th>Brand Image</th>
                      <th>Action</th>
                   </tr>
                </tfoot>
