@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('ship_districts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('division_id');
-            $table->string('district_name');
-            $table->timestamps();
+            $table->foreign('division_id')->references('id')->on('ship_divisions')->cascadeOnUpdate()->restrictOnDelete();
+            $table->string('district_name')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 

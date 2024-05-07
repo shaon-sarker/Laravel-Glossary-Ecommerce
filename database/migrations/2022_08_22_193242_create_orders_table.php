@@ -19,22 +19,26 @@ return new class extends Migration
             $table->unsignedBigInteger('division_id');
             $table->unsignedBigInteger('district_id');
             $table->unsignedBigInteger('state_id');
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('division_id')->references('id')->on('ship_divisions')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('district_id')->references('id')->on('ship_districts')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('state_id')->references('id')->on('ship_states')->cascadeOnUpdate()->restrictOnDelete();
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->string('adress')->nullable();
             $table->string('post_code')->nullable();
             $table->text('notes')->nullable();
             $table->string('payment_type')->nullable();
             $table->string('payment_method')->nullable();
             $table->string('transaction_id')->nullable();
-            $table->string('currency');
+            $table->string('currency')->nullable();
             $table->float('amount',8,2);
             $table->string('order_number')->nullable();
-            $table->string('invoice_no');
-            $table->string('order_date');
-            $table->string('order_month');
-            $table->string('order_year');
+            $table->string('invoice_no')->nullable();
+            $table->string('order_date')->nullable();
+            $table->string('order_month')->nullable();
+            $table->string('order_year')->nullable();
             $table->string('confirmed_date')->nullable();
             $table->string('processing_date')->nullable();
             $table->string('picked_date')->nullable();
@@ -43,8 +47,10 @@ return new class extends Migration
             $table->string('cancel_date')->nullable();
             $table->string('return_date')->nullable();
             $table->string('return_reason')->nullable();
-            $table->string('status'); 
-            $table->timestamps();
+            $table->string('status')->nullable(); 
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 

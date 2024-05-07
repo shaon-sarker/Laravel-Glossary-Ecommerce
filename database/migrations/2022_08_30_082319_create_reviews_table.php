@@ -22,13 +22,14 @@ return new class extends Migration
             $table->foreign('product_id')
                     ->references('id')->on('products')
                     ->onDelete('cascade');
-
             $table->foreign('user_id')
                     ->references('id')->on('users')
                     ->onDelete('cascade');
             $table->string('status')->default(0);
             $table->integer('vendor_id')->nullable();   
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 

@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
-            $table->string('banner_title');
-            $table->string('banner_url');
-            $table->string('banner_image');
-            $table->timestamps();
+            $table->string('banner_title')->nullable();
+            $table->string('banner_url')->nullable();
+            $table->string('banner_image')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 

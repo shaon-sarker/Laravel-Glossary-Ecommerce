@@ -14,16 +14,19 @@
          </nav>
       </div>
       <div class="ms-auto">
+         <div class="btn-group">
+            <a href="{{ route('all.brand') }}" class="btn btn-primary">Back</a> 				 
+         </div>
       </div>
    </div>
    <!--end breadcrumb-->
    <div class="container">
       <div class="main-body">
          <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-112">
                <div class="card">
                   <div class="card-body">
-                     <form id="myForm" method="post" action="{{ route('store.brand') }}" enctype="multipart/form-data" >
+                     <form id="myForm" method="POST" action="{{ route('store.brand') }}" enctype="multipart/form-data" >
                         @csrf
                         <div class="row mb-3">
                            <div class="col-sm-3">
@@ -46,14 +49,15 @@
                               <h6 class="mb-0"> </h6>
                            </div>
                            <div class="col-sm-9 text-secondary">
-                              <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Brand-Image" style="width:100px; height: 100px;"  >
+                              <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Brand-Image" style="width:100px; height: 100px;">
                            </div>
                         </div>
                         <div class="row">
                            <div class="col-sm-3"></div>
                            <div class="col-sm-9 text-secondary">
-                              <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
-                           </div>
+                              <button type="submit" class="btn btn-primary px-4">Submit</button>
+                              <a href="{{ route('all.brand') }}" class="btn btn-danger px-4">Cancel</a>
+                           </div> 
                         </div>
                   </div>
                   </form>

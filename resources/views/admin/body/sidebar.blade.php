@@ -18,7 +18,7 @@
 			 <div class="menu-title">Dashboard</div>
 		  </a>
 	   </li>
-	   @if(Auth::user()->can('brand.menu'))
+	   {{-- @if(Auth::user()->can('brand.menu')) --}}
 	   <li>
 		  <a href="javascript:;" class="has-arrow">
 			 <div class="parent-icon"><i class='bx bx-cookie'></i>
@@ -26,18 +26,18 @@
 			 <div class="menu-title">Brand</div>
 		  </a>
 		  <ul>
-			 @if(Auth::user()->can('brand.list'))
+			 {{-- @if(Auth::user()->can('brand.list')) --}}
 			 <li> <a href="{{ route('all.brand') }}"><i class="bx bx-right-arrow-alt"></i>All Brand</a>
 			 </li>
-			 @endif
-			 @if(Auth::user()->can('brand.add'))
+			 {{-- @endif
+			 @if(Auth::user()->can('brand.add')) --}}
 			 <li> <a href="{{ route('add.brand') }}"><i class="bx bx-right-arrow-alt"></i>Add Brand </a>
 			 </li>
-			 @endif
+			 {{-- @endif --}}
 		  </ul>
 	   </li>
-	   @endif
-	   @if(Auth::user()->can('category.menu'))
+	   {{-- @endif
+	   @if(Auth::user()->can('category.menu')) --}}
 	   <li>
 		  <a href="javascript:;" class="has-arrow">
 			 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -45,18 +45,18 @@
 			 <div class="menu-title">Category</div>
 		  </a>
 		  <ul>
-			 @if(Auth::user()->can('category.list'))
+			 {{-- @if(Auth::user()->can('category.list')) --}}
 			 <li> <a href="{{ route('all.category') }}"><i class="bx bx-right-arrow-alt"></i>All Category</a>
 			 </li>
-			 @endif
-			 @if(Auth::user()->can('category.add'))
+			 {{-- @endif
+			 @if(Auth::user()->can('category.add')) --}}
 			 <li> <a href="{{ route('add.category') }}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
 			 </li>
-			 @endif
+			 {{-- @endif --}}
 		  </ul>
 	   </li>
-	   @endif
-	   @if(Auth::user()->can('subcategory.menu'))
+	   {{-- @endif
+	   @if(Auth::user()->can('subcategory.menu')) --}}
 	   <li>
 		  <a href="javascript:;" class="has-arrow">
 			 <div class="parent-icon"><i class="lni lni-codepen"></i>
@@ -64,18 +64,18 @@
 			 <div class="menu-title">SubCategory</div>
 		  </a>
 		  <ul>
-			 @if(Auth::user()->can('subcategory.list'))
+			 {{-- @if(Auth::user()->can('subcategory.list')) --}}
 			 <li> <a href="{{ route('all.subcategory') }}"><i class="bx bx-right-arrow-alt"></i>All SubCategory</a>
 			 </li>
-			 @endif
-			 @if(Auth::user()->can('subcategory.add'))
+			 {{-- @endif
+			 @if(Auth::user()->can('subcategory.add')) --}}
 			 <li> <a href="{{ route('add.subcategory') }}"><i class="bx bx-right-arrow-alt"></i>Add SubCategory</a>
 			 </li>
-			 @endif
+			 {{-- @endif --}}
 		  </ul>
 	   </li>
-	   @endif
-	   @if(Auth::user()->can('product.menu'))
+	   {{-- @endif
+	   @if(Auth::user()->can('product.menu')) --}}
 	   <li>
 		  <a href="javascript:;" class="has-arrow">
 			 <div class="parent-icon"><i class="lni lni-fresh-juice"></i>
@@ -83,18 +83,18 @@
 			 <div class="menu-title">Product Manage</div>
 		  </a>
 		  <ul>
-			 @if(Auth::user()->can('product.list'))
+			 {{-- @if(Auth::user()->can('product.list')) --}}
 			 <li> <a href="{{ route('all.product') }}"><i class="bx bx-right-arrow-alt"></i>All Product</a>
 			 </li>
-			 @endif
-			 @if(Auth::user()->can('product.add'))
+			 {{-- @endif
+			 @if(Auth::user()->can('product.add')) --}}
 			 <li> <a href="{{ route('add.product') }}"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
 			 </li>
-			 @endif
+			 {{-- @endif --}}
 		  </ul>
 	   </li>
-	   @endif
-	   @if(Auth::user()->can('slider.menu'))
+	   {{-- @endif
+	   @if(Auth::user()->can('slider.menu')) --}}
 	   <li>
 		  <a href="javascript:;" class="has-arrow">
 			 <div class="parent-icon"><i class="lni lni-gallery"></i>
@@ -102,18 +102,18 @@
 			 <div class="menu-title">Slider Manage</div>
 		  </a>
 		  <ul>
-			 @if(Auth::user()->can('slider.list'))
+			 {{-- @if(Auth::user()->can('slider.list')) --}}
 			 <li> <a href="{{ route('all.slider') }}"><i class="bx bx-right-arrow-alt"></i>All Slider</a>
 			 </li>
-			 @endif
-			 @if(Auth::user()->can('slider.add'))
+			 {{-- @endif
+			 @if(Auth::user()->can('slider.add')) --}}
 			 <li> <a href="{{ route('add.slider') }}"><i class="bx bx-right-arrow-alt"></i>Add Slider</a>
 			 </li>
-			 @endif
+			 {{-- @endif --}}
 		  </ul>
 	   </li>
-	   @endif
-	   @if(Auth::user()->can('ads.menu'))
+	   {{-- @endif
+	   @if(Auth::user()->can('ads.menu')) --}}
 	   <li>
 		  <a href="javascript:;" class="has-arrow">
 			 <div class="parent-icon"><i class="lni lni-image"></i>
@@ -121,18 +121,18 @@
 			 <div class="menu-title">Banner Manage</div>
 		  </a>
 		  <ul>
-			 @if(Auth::user()->can('ads.list'))
+			 {{-- @if(Auth::user()->can('ads.list')) --}}
 			 <li> <a href="{{ route('all.banner') }}"><i class="bx bx-right-arrow-alt"></i>All Banner</a>
 			 </li>
-			 @endif
-			 @if(Auth::user()->can('ads.add'))
+			 {{-- @endif
+			 @if(Auth::user()->can('ads.add')) --}}
 			 <li> <a href="{{ route('add.banner') }}"><i class="bx bx-right-arrow-alt"></i>Add Banner</a>
 			 </li>
-			 @endif
+			 {{-- @endif --}}
 		  </ul>
 	   </li>
-	   @endif
-	   @if(Auth::user()->can('coupon.menu'))
+	   {{-- @endif
+	   @if(Auth::user()->can('coupon.menu')) --}}
 	   <li>
 		  <a href="javascript:;" class="has-arrow">
 			 <div class="parent-icon"><i class="lni lni-invention"></i>
@@ -140,18 +140,18 @@
 			 <div class="menu-title">Coupon System</div>
 		  </a>
 		  <ul>
-			 @if(Auth::user()->can('coupon.list'))
+			 {{-- @if(Auth::user()->can('coupon.list')) --}}
 			 <li> <a href="{{ route('all.coupon') }}"><i class="bx bx-right-arrow-alt"></i>All Coupon</a>
 			 </li>
-			 @endif
-			 @if(Auth::user()->can('coupon.add'))
+			 {{-- @endif
+			 @if(Auth::user()->can('coupon.add')) --}}
 			 <li> <a href="{{ route('add.coupon') }}"><i class="bx bx-right-arrow-alt"></i>Add Coupon</a>
 			 </li>
-			 @endif
+			 {{-- @endif --}}
 		  </ul>
 	   </li>
-	   @endif
-	   @if(Auth::user()->can('area.menu'))
+	   {{-- @endif
+	   @if(Auth::user()->can('area.menu')) --}}
 	   <li>
 		  <a href="javascript:;" class="has-arrow">
 			 <div class="parent-icon"><i class="lni lni-map"></i>
@@ -167,7 +167,7 @@
 			 </li>
 		  </ul>
 	   </li>
-	   @endif
+	   {{-- @endif --}}
 	   <li class="menu-label"></li>
 	   {{-- @if(Auth::user()->can('vendor.menu')) --}}
 	   <li>

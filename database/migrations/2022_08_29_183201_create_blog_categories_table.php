@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('blog_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('blog_category_name');
-            $table->string('blog_category_slug');
-            $table->timestamps();
+            $table->string('blog_category_name')->nullable();
+            $table->string('blog_category_slug')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 

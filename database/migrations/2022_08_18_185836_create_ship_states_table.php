@@ -17,8 +17,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('division_id');
             $table->unsignedBigInteger('district_id');
-            $table->string('state_name');
-            $table->timestamps();
+            $table->foreign('division_id')->references('id')->on('ship_divisions')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('district_id')->references('id')->on('ship_districts')->cascadeOnUpdate()->restrictOnDelete();
+            $table->string('state_name')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 

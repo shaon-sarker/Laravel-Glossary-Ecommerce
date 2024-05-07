@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('multi_imgs', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->string('photo_name');
-            $table->timestamps();
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->cascadeOnUpdate()->restrictOnDelete();
+            $table->string('photo_name')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 

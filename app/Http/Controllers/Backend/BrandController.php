@@ -28,7 +28,6 @@ class BrandController extends Controller
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(300,300)->save('upload/brand/'.$name_gen);
         $save_url = 'upload/brand/'.$name_gen;
-
         Brand::insert([
             'brand_name' => $request->brand_name,
             'brand_slug' => strtolower(str_replace(' ', '-',$request->brand_name)),

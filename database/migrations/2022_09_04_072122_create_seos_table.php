@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('meta_author')->nullable();
             $table->string('meta_keyword')->nullable();
             $table->text('meta_description')->nullable(); 
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 

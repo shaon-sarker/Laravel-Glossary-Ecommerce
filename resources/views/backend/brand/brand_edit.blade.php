@@ -14,16 +14,19 @@
          </nav>
       </div>
       <div class="ms-auto">
+         <div class="btn-group">
+            <a href="{{ route('all.brand') }}" class="btn btn-primary">Back</a> 				 
+         </div>
       </div>
    </div>
    <!--end breadcrumb-->
    <div class="container">
       <div class="main-body">
          <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-12">
                <div class="card">
                   <div class="card-body">
-                     <form id="myForm" method="post" action="{{ route('update.brand') }}" enctype="multipart/form-data" >
+                     <form id="myForm" method="POST" action="{{ route('update.brand') }}" enctype="multipart/form-data" >
                         @csrf
                         <input type="hidden" name="id" value="{{ $brand->id }}">
                         <input type="hidden" name="old_image" value="{{ $brand->brand_image }}">

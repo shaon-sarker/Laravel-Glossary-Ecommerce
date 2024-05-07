@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->string('coupon_name');
-            $table->integer('coupon_discount');
-            $table->string('coupon_validity');
+            $table->string('coupon_name')->nullable();
+            $table->integer('coupon_discount')->nullable();
+            $table->string('coupon_validity')->nullable();
             $table->integer('status')->default(1);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 
