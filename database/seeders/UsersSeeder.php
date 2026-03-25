@@ -15,17 +15,17 @@ class UsersSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            //Admin 
+            //Admin
             [
                 'name' => 'Admin',
                 'username' => 'admin',
-                'email' => 'admin@gmail.com',
-                'password' => Hash::make('111'),
+                'email' => 'admin@mail.com',
+                'password' => Hash::make('1234'),
                 'role' => 'admin',
                 'status' => 'active',
 
             ],
-              //Vendor 
+              //Vendor
             [
                 'name' => 'Ariyan Vendor',
                 'username' => 'vendor',
@@ -35,7 +35,7 @@ class UsersSeeder extends Seeder
                 'status' => 'active',
 
             ],
-              //User OR Customer  
+              //User OR Customer
             [
                 'name' => 'User',
                 'username' => 'user',
