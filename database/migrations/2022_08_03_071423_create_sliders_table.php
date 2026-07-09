@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('slider_title')->nullable();
             $table->string('short_title')->nullable();
             $table->string('slider_image')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->softDeletes();

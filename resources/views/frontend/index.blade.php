@@ -1,7 +1,7 @@
 @extends('frontend.master_dashboard')
 @section('main')
 @section('title')
-Home Easy Multi Vendor Shop 
+Home Easy Multi Vendor Shop
 @endsection
 @include('frontend.home.home_slider')
 <!--End hero slider-->
@@ -17,7 +17,7 @@ Home Easy Multi Vendor Shop
 <section class="product-tabs section-padding position-relative">
    <div class="container">
       <div class="section-title style-2 wow animate__animated animate__fadeIn">
-         <h3>{{ $skip_category_0->category_name }} Category </h3>
+         <h3>{{ $skip_category_0->category_name ?? '' }} Category </h3>
       </div>
       <!--End nav-tabs-->
       <div class="tab-content" id="myTabContent">
@@ -57,19 +57,19 @@ Home Easy Multi Vendor Shop
                         @php
                         $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
                         $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
-                        @endphp        
+                        @endphp
                         <div class="product-rate-cover">
                            <div class="product-rate d-inline-block">
                               @if($avarage == 0)
-                              @elseif($avarage == 1 || $avarage < 2)                     
+                              @elseif($avarage == 1 || $avarage < 2)
                               <div class="product-rating" style="width: 20%"></div>
-                              @elseif($avarage == 2 || $avarage < 3)                     
+                              @elseif($avarage == 2 || $avarage < 3)
                               <div class="product-rating" style="width: 40%"></div>
-                              @elseif($avarage == 3 || $avarage < 4)                     
+                              @elseif($avarage == 3 || $avarage < 4)
                               <div class="product-rating" style="width: 60%"></div>
-                              @elseif($avarage == 4 || $avarage < 5)                     
+                              @elseif($avarage == 4 || $avarage < 5)
                               <div class="product-rating" style="width: 80%"></div>
-                              @elseif($avarage == 5 || $avarage < 5)                     
+                              @elseif($avarage == 5 || $avarage < 5)
                               <div class="product-rating" style="width: 100%"></div>
                               @endif
                            </div>
@@ -103,6 +103,7 @@ Home Easy Multi Vendor Shop
                <!--end product card-->
                @endforeach
             </div>
+
             <!--End product-grid-4-->
          </div>
       </div>
@@ -280,7 +281,7 @@ Home Easy Multi Vendor Shop
          <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 wow animate__animated animate__fadeInUp" data-wow-delay="0">
             <h4 class="section-title style-1 mb-30 animated animated"> Hot Deals </h4>
             <div class="product-list-small animated animated">
-               @foreach($hot_deals as $item)                   
+               @foreach($hot_deals as $item)
                <article class="row align-items-center hover-up">
                   {{-- <figure class="col-md-4 mb-0">
                      <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><img src="{{ asset( $item->product_thambnail ) }}" alt="" /></a>
@@ -313,7 +314,7 @@ Home Easy Multi Vendor Shop
          <div class="col-xl-3 col-lg-4 col-md-6 mb-md-0 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
             <h4 class="section-title style-1 mb-30 animated animated">  Special Offer </h4>
             <div class="product-list-small animated animated">
-               @foreach($special_offer as $item)                   
+               @foreach($special_offer as $item)
                <article class="row align-items-center hover-up">
                   {{-- <figure class="col-md-4 mb-0">
                      <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><img src="{{ asset( $item->product_thambnail ) }}" alt="" /></a>
@@ -346,7 +347,7 @@ Home Easy Multi Vendor Shop
          <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-lg-block wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
             <h4 class="section-title style-1 mb-30 animated animated">Recently added</h4>
             <div class="product-list-small animated animated">
-               @foreach($new as $item)                   
+               @foreach($new as $item)
                <article class="row align-items-center hover-up">
                   {{-- <figure class="col-md-4 mb-0">
                      <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><img src="{{ asset( $item->product_thambnail ) }}" alt="" /></a>
@@ -379,7 +380,7 @@ Home Easy Multi Vendor Shop
          <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-xl-block wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
             <h4 class="section-title style-1 mb-30 animated animated"> Special Deals </h4>
             <div class="product-list-small animated animated">
-               @foreach($special_deals as $item)                   
+               @foreach($special_deals as $item)
                <article class="row align-items-center hover-up">
                   {{-- <figure class="col-md-4 mb-0">
                      <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><img src="{{ asset( $item->product_thambnail ) }}" alt="" /></a>

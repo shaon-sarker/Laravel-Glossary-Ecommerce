@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
             //Admin
             [
                 'name' => 'Admin',
-                'username' => 'admin',
+                // 'username' => 'admin',
                 'email' => 'admin@mail.com',
                 'password' => Hash::make('1234'),
                 'role' => 'admin',
@@ -28,7 +28,7 @@ class UsersSeeder extends Seeder
               //Vendor
             [
                 'name' => 'Ariyan Vendor',
-                'username' => 'vendor',
+                // 'username' => 'vendor',
                 'email' => 'vendor@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'vendor',
@@ -38,7 +38,7 @@ class UsersSeeder extends Seeder
               //User OR Customer
             [
                 'name' => 'User',
-                'username' => 'user',
+                // 'username' => 'user',
                 'email' => 'user@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'user',

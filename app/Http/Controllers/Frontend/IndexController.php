@@ -9,61 +9,79 @@ use App\Models\SubCategory;
 use App\Models\MultiImg;
 use App\Models\Brand;
 use App\Models\Product;
-use App\Models\User; 
- 
+use App\Models\User;
+
 class IndexController extends Controller
 {
 
-    public function Index(){
+    public function Index()
+    {
+        // default empty collections (IMPORTANT)
+        $skip_product_0 = collect();
+        $skip_product_2 = collect();
+        $skip_product_7 = collect();
+
         $skip_category_0 = Category::skip(0)->first();
-        $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->limit(5)->get();
+        if ($skip_category_0) {
+            $skip_product_0 = Product::where('status', 1)
+                ->where('category_id', $skip_category_0->id)
+                ->latest()
+                ->limit(5)
+                ->get();
+        }
 
-      //   $skip_category_2 = Category::skip(2)->first();
-      //   $skip_product_2 = Product::where('status',1)->where('category_id',$skip_category_2->id)->orderBy('id','DESC')->limit(5)->get();
-
-         $skip_category_2 = Category::skip(2)->first();
-
-         if ($skip_category_2) {
-            // If $skip_category_2 is not null, proceed with the query
+        $skip_category_2 = Category::skip(2)->first();
+        if ($skip_category_2) {
             $skip_product_2 = Product::where('status', 1)
-               ->where('category_id', optional($skip_category_2)->id) // Use optional() to avoid errors if $skip_category_2 is null
-               ->orderBy('id', 'DESC')
-               ->limit(5)
-               ->get();
-         } else {
-            // Handle the case when $skip_category_2 is null
-            $skip_product_2 = []; // or any other default value or error handling logic
-         }
-
-      //   $skip_category_7 = Category::skip(7)->first();
-      //   $skip_product_7 = Product::where('status',1)->where('category_id',$skip_category_7->id)->orderBy('id','DESC')->limit(5)->get();
+                ->where('category_id', $skip_category_2->id)
+                ->latest()
+                ->limit(5)
+                ->get();
+        }
 
         $skip_category_7 = Category::skip(7)->first();
-
-         if ($skip_category_7) {
-            // If $skip_category_7 is not null, proceed with the query
+        if ($skip_category_7) {
             $skip_product_7 = Product::where('status', 1)
-               ->where('category_id', optional($skip_category_7)->id) // Use optional() to avoid errors if $skip_category_7 is null
-               ->orderBy('id', 'DESC')
-               ->limit(5)
-               ->get();
-         } else {
-            // Handle the case when $skip_category_7 is null
-            $skip_product_7 = []; // or any other default value or error handling logic
-         }
+                ->where('category_id', $skip_category_7->id)
+                ->latest()
+                ->limit(5)
+                ->get();
+        }
 
+        $hot_deals = Product::where('hot_deals', 1)
+            ->whereNotNull('discount_price')
+            ->latest()
+            ->limit(3)
+            ->get();
 
-        $hot_deals = Product::where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(3)->get();
+        $special_offer = Product::where('special_offer', 1)
+            ->latest()
+            ->limit(3)
+            ->get();
 
-        $special_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(3)->get();
+        $new = Product::where('status', 1)
+            ->latest()
+            ->limit(3)
+            ->get();
 
-        $new = Product::where('status',1)->orderBy('id','DESC')->limit(3)->get();
+        $special_deals = Product::where('special_deals', 1)
+            ->latest()
+            ->limit(3)
+            ->get();
 
-        $special_deals = Product::where('special_deals',1)->orderBy('id','DESC')->limit(3)->get();
-
-        return view('frontend.index',compact('skip_category_0','skip_product_0','skip_category_2','skip_product_2','skip_category_7','skip_product_7','hot_deals','special_offer','new','special_deals'));
-
-    } // End Method 
+        return view('frontend.index', compact(
+            'skip_category_0',
+            'skip_product_0',
+            'skip_category_2',
+            'skip_product_2',
+            'skip_category_7',
+            'skip_product_7',
+            'hot_deals',
+            'special_offer',
+            'new',
+            'special_deals'
+        ));
+    }
 
 
 
@@ -87,7 +105,7 @@ class IndexController extends Controller
 
         return view('frontend.product.product_details',compact('product','product_color','product_size','multiImage','relatedProduct'));
 
-     } // End Method 
+     } // End Method
 
 
      public function VendorDetails($id){
@@ -96,7 +114,7 @@ class IndexController extends Controller
         $vproduct = Product::where('vendor_id',$id)->get();
         return view('frontend.vendor.vendor_details',compact('vendor','vproduct'));
 
-     } // End Method 
+     } // End Method
 
 
      public function VendorAll(){
@@ -104,7 +122,7 @@ class IndexController extends Controller
         $vendors = User::where('status','active')->where('role','vendor')->orderBy('id','DESC')->get();
         return view('frontend.vendor.vendor_all',compact('vendors'));
 
-     } // End Method 
+     } // End Method
 
 
      public function CatWiseProduct(Request $request,$id,$slug){
@@ -117,7 +135,7 @@ class IndexController extends Controller
 
       return view('frontend.product.category_view',compact('products','categories','breadcat','newProduct'));
 
-     }// End Method 
+     }// End Method
 
 
       public function SubCatWiseProduct(Request $request,$id,$slug){
@@ -130,7 +148,7 @@ class IndexController extends Controller
 
       return view('frontend.product.subcategory_view',compact('products','categories','breadsubcat','newProduct'));
 
-     }// End Method 
+     }// End Method
 
 
      public function ProductViewAjax($id){
@@ -150,7 +168,7 @@ class IndexController extends Controller
 
         ));
 
-     }// End Method 
+     }// End Method
 
 
      public function ProductSearch(Request $request){
@@ -163,7 +181,7 @@ class IndexController extends Controller
          $newProduct = Product::orderBy('id','DESC')->limit(3)->get();
          return view('frontend.product.search',compact('products','item','categories','newProduct'));
 
-     }// End Method 
+     }// End Method
 
 
      public function SearchProduct(Request $request){
@@ -175,8 +193,7 @@ class IndexController extends Controller
 
         return view('frontend.product.search_product',compact('products'));
 
-     }// End Method 
+     }// End Method
 
 
 }
- 
